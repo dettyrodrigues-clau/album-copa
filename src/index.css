@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: #f6f8fb;
+  color: #0f172a;
+  overscroll-behavior-y: contain;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl font-semibold text-base transition-all active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-verde-500 text-white shadow-card hover:bg-verde-600;
+  }
+  .btn-secondary {
+    @apply btn bg-azul-500 text-white shadow-card hover:bg-azul-600;
+  }
+  .btn-accent {
+    @apply btn bg-amarelo-500 text-azul-900 shadow-card hover:bg-amarelo-400;
+  }
+  .btn-ghost {
+    @apply btn bg-white text-cinza-800 border border-cinza-200 hover:bg-cinza-50;
+  }
+  .btn-danger {
+    @apply btn bg-rose-500 text-white shadow-card hover:bg-rose-600;
+  }
+  .card {
+    @apply bg-white rounded-3xl shadow-card border border-cinza-100;
+  }
+  .input {
+    @apply w-full rounded-2xl border border-cinza-200 bg-white px-4 py-3 text-base outline-none focus:border-verde-500 focus:ring-2 focus:ring-verde-100 transition;
+  }
+  .label {
+    @apply block text-sm font-semibold text-cinza-700 mb-1.5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide;
+  }
+}
+
+/* Status colors */
+.status-missing { @apply bg-rose-100 text-rose-700; }
+.status-have { @apply bg-amarelo-100 text-amarelo-700; }
+.status-duplicate { @apply bg-azul-100 text-azul-700; }
+.status-glued { @apply bg-verde-100 text-verde-700; }
+
+/* Safe area for iOS notch */
+.safe-top { padding-top: env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Hide arrows on number inputs (mobile-friendly) */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* Sticker grid hover */
+.sticker-tile { transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.sticker-tile:active { transform: scale(0.95); }
+
+/* Brazil flag stripe decoration */
+.flag-stripe {
+  background: linear-gradient(
+    90deg,
+    #009C3B 0%, #009C3B 33%,
+    #FFDF00 33%, #FFDF00 66%,
+    #002776 66%, #002776 100%
+  );
+  height: 4px;
+}
